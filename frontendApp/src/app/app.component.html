@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    color: white;
+    background: #202731;
+  }
+
+  section {
+    display: inline-flexbox;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    min-height: 100px;
+    padding: 50px 20vw;
+  }
+  
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+  
+  .wave::before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 55%;
+    border-radius: 100% 50%;
+    transform: translate(-20%, 40%);
+    z-index: -1;
+    background-color: #202731;
+  }
+
+  .wave::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 55%;
+    border-radius: 100% 50%;
+    transform: translate(40%, 60%);
+    z-index: -1;
+    background-color: #F5E278;
+  }
+
+  .wave svg {
+    position: relative;
+    display: block;
+    width: calc(202% + 1.3px);
+    height: 331px;
+    transform: rotateY(180deg);
+  }
+
+  .wave .shape-fill {
+      fill: #F5E278;
+  }
+
+  .blue {
+    background: #4ebdf0;
+  }
+
+  .green {
+    background: rgb(32, 165, 32);
+  }
+</style>
+
+<body>
+  <section class="blue">
+    <h1>Incarcare imagine</h1>
+    <div draggable="true" ngClass="{{dragAreaClass}}">
+      <div class="row">
+          <div class="col-md-12 text-center">
+            <img *ngFor='let url of urls' [src]="url" [@photoState]="position" height="100"><br>
+            <input type="file" (change)="onSelectedFile($event)" accept="image/*" multiple/>  
+          </div>
+        </div>
+      </div>
+    <div class="" *ngIf="error">
+      Only images was uploaded
+    </div>
+  </section>
+  <section>
+    <h1>Selectare filtre si aplicare transformari imagine</h1>
+    <div class="circle">
+      <span></span>
+    </div>
+    <div id="outer1">
+      <div class="inner1"><button mat-flat-button class="btn-grad1">Filter1</button></div>
+      <div class="inner1"><button mat-flat-button class="btn-grad2">Filter2</button></div>
+      <div class="inner1"><button mat-flat-button class="btn-grad3">Filter3</button></div>
+      <div class="inner1"><button mat-flat-button class="btn-grad4">Filter4</button></div>
+    </div>
+    <div id="outer2" >
+      <div class="inner2"><button mat-raised-button color="primary" (click)="changePos('move')">Translate</button></div>
+      <div class="inner2"><button mat-raised-button color="accent"(click)="changePos('spin')">Rotate</button></div>
+      <div class="inner2"><button mat-raised-button color="warn"(click)="changePos('enlarge')">Scale</button></div>
+      <div class="inner2"><button mat-raised-button (click)="changePos('null')">Reset</button></div>
+    </div>
+    
+  </section>
+  <section class="green">
+    <h1>Imagine filtrata</h1>
+    <div class="wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    <img [src]="photoUrl1" [@photoState]="position" style="width:128px;height:128px; text-align: right">
+  </section>
+</body>
+</html>
