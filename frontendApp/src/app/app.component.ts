@@ -82,7 +82,7 @@ export class AppComponent {
       for (let i = 0; i < files.length; i++) {
         const mimeType = files[i].type;
         if (mimeType.match(/image\/*/) == null) {
-          this.error = "Only images was uploaded";
+          this.error = "Only images must be uploaded!";
           continue;
         }
         var reader = new FileReader();
