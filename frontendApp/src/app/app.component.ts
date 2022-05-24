@@ -68,13 +68,14 @@ export class AppComponent {
     var files = event.target.files;
     if (files) {
       for (let i = 0; i < files.length; i++) {
+        const mimeType = files[i].type;
         var reader = new FileReader();
         reader.readAsDataURL(files[i]);
         reader.onload = (events: any) => { 
           this.urls.push(events.target.result); 
         }
       }
-    }  
+    }
   }
 
   saveFiles(files: FileList) {
@@ -82,15 +83,19 @@ export class AppComponent {
       for (let i = 0; i < files.length; i++) {
         const mimeType = files[i].type;
         if (mimeType.match(/image\/*/) == null) {
-          this.error = "Only images was uploaded";
+          this.error = "Only images must be uploaded!";
           continue;
         }
         var reader = new FileReader();
         reader.readAsDataURL(files[i]);
         reader.onload = (events: any) => { 
-          this.urls.push(events.target.result); 
+          this.urls.push(events.target.result);
         }
       }
     }  
+  }
+
+  deleteImage(url: any): void {
+    this.urls = this.urls.filter((a) => a !== url);
   }
 }
