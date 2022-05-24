@@ -94,8 +94,12 @@ export class AppComponent {
       }
     }  
   }
+<<<<<<< HEAD
 
   deleteImage(url: any): void {
     this.urls = this.urls.filter((a) => a !== url);
   }
 }
+=======
+}
+>>>>>>> 4b927e0cd10727410d80016c57e946fc87928975
