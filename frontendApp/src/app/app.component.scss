@@ -155,3 +155,12 @@
 {
     display: inline;
 }
+
+// highcharts
+#chart-gauge, #chart-pie, #chart-line {
+  display: inline-block;
+  min-width: 226px;
+  max-width: 800px;
+  height: 180px;
+  margin: 0 auto;
+}
