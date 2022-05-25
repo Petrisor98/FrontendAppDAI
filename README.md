@@ -9,3 +9,5 @@ Tehnologii utilizate:
 -  TypeScript
 -  HTTP
 -  Angular
+-  Node.js
+-  npm
