@@ -7,7 +7,7 @@
   font-size: 1.5rem;
   border: 3px solid #bbb;
   padding: 1.5rem;
-  background-color: #1f6521;
+  background-color: #01345B;
   color: #bbb;
 }
 
@@ -30,7 +30,7 @@
 /* animatie cerc */
 .circle {
 	float: right;
-	background: linear-gradient(#bde411, #c5270b);
+	background: linear-gradient(white, rgb(231, 221, 221));
 	height: 10vh;
 	width: 10vh;
 	border-radius: 50%;
@@ -48,7 +48,7 @@
 }
 .circle span {
 	position: absolute;
-	background: linear-gradient(#33ccff, #ff0066);
+	background: linear-gradient(#01345B, #023861);
 	height: 100%;
 	width: 100%;
 	border-radius: 50%;
@@ -63,15 +63,15 @@
 	filter: blur(20px);
 }
 .circle span:nth-child(4) {
-	filter: blur(55px);
+	filter: blur(35px);
 }
 /* gradient 1*/
-.btn-grad1 {background-image: linear-gradient(to right, #AA076B 0%, #61045F  51%, #AA076B  100%)}
 .btn-grad1 {
+  background-image: linear-gradient(to right, #000046 0%, #1CB5E0  51%, #000046  100%);
   margin: 10px;
-  padding: 15px 45px;
+  padding: 10px 10px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;            
@@ -79,6 +79,7 @@
   border-radius: 10px;
   display: block;
 }
+
 .btn-grad1:hover {
   background-position: right center;
   color: #fff;
@@ -86,12 +87,12 @@
 }
 
 /* gradient 2*/
-.btn-grad2 {background-image: linear-gradient(to right, #000000 0%, #e74c3c  51%, #000000  100%)}
 .btn-grad2 {
+  background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
   margin: 10px;
-  padding: 15px 45px;
+  padding: 10px 10px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;            
@@ -107,40 +108,21 @@
 }
 
 /* gradient 3*/
-.btn-grad3 {background-image: linear-gradient(to right, #200122 0%, #6f0000  51%, #200122  100%)}
 .btn-grad3 {
+  background-image: linear-gradient(to right, #0575E6 0%, #021B79  51%, #0575E6  100%);
   margin: 10px;
-  padding: 15px 45px;
+  padding: 10px 10px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;            
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   display: block;
-}
-.btn-grad3:hover {
-  background-position: left center;
-  color: #fff;
-  text-decoration: none;
 }
 
-/* gradient 4 */
-.btn-grad4 {background-image: linear-gradient(to right, #000000 0%, #0f9b0f  51%, #000000  100%)}
-.btn-grad4 {
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;            
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  display: block;
-}
-.btn-grad:hover {
+.btn-grad3:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;
@@ -149,19 +131,24 @@
 /* afisare butoane pe aceeasi linie */
 #outer1
 {
-    width:120%;
-    text-align: left;
+    width:100%;
+    text-align: center;
+    align-items: center;
 }
 
 .inner1
 {
-    display: inline-table; 
+    display: inline-block; 
 }
 
 #outer2
 {
     width:100%;
-    text-align: right;
+    position: fixed;
+    text-align: center;
+    align-items: center;
+    bottom: 0;
+    left: 55vh;
 }
 
 .inner2
