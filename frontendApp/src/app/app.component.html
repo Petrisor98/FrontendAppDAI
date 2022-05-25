@@ -2,108 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 
 <style>
   body {
-    margin: 0;
     font-family: 'Prompt', sans-serif;
-    color: white;
-    background: #a4a71e;
-  }
-
-  section {
-    display: inline-flexbox;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    min-height: 100px;
-    padding: 40px 20vw;
+    align-content: center;
     text-align: center;
   }
+
+  .quodrant{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .qtop,
+  .qbottom{
+    width: 100%;
+    height: 50vh;
+  }
   
-  .wave {
-    position: absolute;
+  .quodrant1,
+  .quodrant2,
+  .quodrant3,
+  .quodrant4{
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+
+  .quodrant1{
+    top: 0;
+    left: 50vh;
+    background-color: white;
+  }
+
+  .quodrant2{
     top: 0;
     left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-  
-  .wave svg {
-    position: relative;
-    display: block;
-    width: calc(102% + 1.3px);
-    height: 60px;
+    background-color: #a71d1d;
   }
 
-  .wave .shape-fill {
-      fill: #a4a71e;
+  .quodrant3{
+    top: 50vw;
+    left: 0;
+    background-color: #f04c4c;
   }
 
-  .color1 {
-    background: #19181a;
+  .quodrant4{ 
+    top: 50vw;
+    left: 50vh;
+    background-color: #52d6cd;
   }
-
-  .color2 {
-    background: #1f2605;
-  }
-</style>
+</style> 
 
 <body>
-  <section class="color1">
-    <h1>Incarcare imagine, drag&drop si eliminare imagine prin click</h1>
-    <div draggable="true" ngClass="{{dragAreaClass}}">
-      <div class="row">
-          <div class="col-md-12 text-center">
-            <img *ngFor='let url of urls' [src]="url" [@photoState]="position" height="100" (click)="deleteImage(url)"><br>
-            <input type="file" (change)="onSelectedFile($event)" accept="image/*" multiple/>
+  <div class='quodrant'>
+    <div class='qtop'>
+        <div class='quodrant1'>
+          <h1>Choose images or remove them by click</h1> 
+          <div draggable="true" ngClass="{{dragAreaClass}}">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                  <img *ngFor='let url of urls' [src]="url" [@photoState]="position" height="100" (click)="deleteImage(url)"><br>
+                  <input type="file" (change)="onSelectedFile($event)" accept="image/*" multiple/>
+                </div>
+            </div>
           </div>
-      </div>
+          <div class="" *ngIf="error">
+            Only images was uploaded
+          </div>
+        </div>
+        <div class='quodrant2'>
+          <h1>Performance monitoring</h1> 
+        </div>
     </div>
-    <div class="" *ngIf="error">
-      Only images was uploaded
+    <div class='qbottom'>
+        <div class='quodrant3'>
+          <h1>Select one filter</h1>
+          <div class="circle">
+            <span></span>
+          </div>
+          <div id="outer1">
+            <div class="inner1"><button mat-flat-button class="btn-grad1">Sharpen</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad2">Emboss</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad3">Sepia</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad1">Contrast</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad2">Brightness</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad3">Black_White</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad1">Gaussian_Blur</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad2">Gradient</button></div>
+            <div class="inner1"><button mat-flat-button class="btn-grad3">Canny_Edge_Detection</button></div>
+          </div>
+        </div>
+        <div class='quodrant4'>
+          <h1>Modified images</h1>
+          <div id="outer2" >
+            <div class="inner2"><button mat-raised-button color="primary" (click)="changePos('move')">Translate</button></div>
+            <div class="inner2"><button mat-raised-button (click)="changePos('spin')">Rotate</button></div>
+            <div class="inner2"><button mat-raised-button color="primary" (click)="changePos('enlarge')">Scale</button></div>
+            <div class="inner2"><button mat-raised-button (click)="changePos('null')">Reset</button></div>
+          </div>
+          <img [src]="photoUrl1" [@photoState]="position" style="width:128px;height:128px; text-align: right">
+        </div>
     </div>
-  </section>
-  <section>
-    <h1>Selectare filtre</h1>
-    <div class="circle">
-      <span></span>
-    </div>
-    <div id="outer1">
-      <div class="inner1"><button mat-flat-button class="btn-grad1">Sharpen</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad2">Emboss</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad3">Sepia</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad4">Contrast</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad1">Brightness</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad2">Black_White</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad3">Gaussian_Blur</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad4">Gradient</button></div>
-      <div class="inner1"><button mat-flat-button class="btn-grad1">Canny_Edge_Detection</button></div>
-    </div>
-    
-  </section>
-  <section class="color2">
-    <h1></h1>
-    <h1>Vizualizare, salvare imagini filtrate si aplicare transformari elementare</h1>
-    <div class="wave">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M602.45,3.86h0S572.9,116.24,281.94,120H923C632,116.24,602.45,3.86,602.45,3.86Z" class="shape-fill"></path>
-    </svg>
-    </div>
-  
-    <div id="outer2" >
-      <div class="inner2"><button mat-raised-button color="primary" (click)="changePos('move')">Translate</button></div>
-      <div class="inner2"><button mat-raised-button color="accent"(click)="changePos('spin')">Rotate</button></div>
-      <div class="inner2"><button mat-raised-button color="warn"(click)="changePos('enlarge')">Scale</button></div>
-      <div class="inner2"><button mat-raised-button (click)="changePos('null')">Reset</button></div>
-    </div>
-    <img [src]="photoUrl1" [@photoState]="position" style="width:128px;height:128px; text-align: right">
-  </section>
+</div>
 </body>
 </html>
