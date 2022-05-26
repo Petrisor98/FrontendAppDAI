@@ -26,11 +26,7 @@
     width: 100%;
     height: 50vh;
   }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
   .quodrant1,
   .quodrant2,
   .quodrant3,
@@ -39,7 +35,6 @@
     float: left;
     width: 50%;
     height: 100%;
-<<<<<<< HEAD
   }
 
   .quodrant1{
@@ -61,44 +56,17 @@
   }
 
   .quodrant4{
-=======
-  }
-
-  .quodrant1{
-    top: 0;
-    left: 50vh;
-    background-color: white;
-  }
-
-  .quodrant2{
-    top: 0;
-    left: 0;
-    background-color: #a71d1d;
-  }
-
-  .quodrant3{
-    top: 50vw;
-    left: 0;
-    background-color: #f04c4c;
-  }
-
-  .quodrant4{ 
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
     top: 50vw;
     left: 50vh;
     background-color: #52d6cd;
   }
-</style> 
+</style>
 
 <body>
   <div class='quodrant'>
     <div class='qtop'>
         <div class='quodrant1'>
-<<<<<<< HEAD
           <h1>Choose images or remove them by click</h1>
-=======
-          <h1>Choose images or remove them by click</h1> 
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
           <div draggable="true" ngClass="{{dragAreaClass}}">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -108,11 +76,7 @@
             </div>
           </div>
           <div class="" *ngIf="error">
-<<<<<<< HEAD
             Only images were uploaded
-=======
-            Only images was uploaded
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
           </div>
         </div>
         <div class='quodrant2'>
@@ -125,7 +89,6 @@
     <div class='qbottom'>
         <div class='quodrant3'>
           <h1>Select one filter</h1>
-<<<<<<< HEAD
           <div id="outer1">
             <div class="inner1"><button mat-flat-button class="btn-grad1" (click)="applyFilter('sharpen')">Sharpen</button></div>
             <div class="inner1"><button mat-flat-button class="btn-grad2" (click)="applyFilter('emboss')">Emboss</button></div>
@@ -136,37 +99,12 @@
             <div class="inner1"><button mat-flat-button class="btn-grad1" (click)="applyFilter('gaussian-blur')">Gaussian_Blur</button></div>
             <div class="inner1"><button mat-flat-button class="btn-grad2" (click)="applyFilter('gradient')">Gradient</button></div>
             <div class="inner1"><button mat-flat-button class="btn-grad3" (click)="applyFilter('canny-edge-detection')">Canny_Edge_Detection</button></div>
-=======
-          <div class="circle">
-            <span></span>
-          </div>
-          <div id="outer1">
-            <div class="inner1"><button mat-flat-button class="btn-grad1">Sharpen</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad2">Emboss</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad3">Sepia</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad1">Contrast</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad2">Brightness</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad3">Black_White</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad1">Gaussian_Blur</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad2">Gradient</button></div>
-            <div class="inner1"><button mat-flat-button class="btn-grad3">Canny_Edge_Detection</button></div>
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
           </div>
         </div>
         <div class='quodrant4'>
           <h1>Modified images</h1>
-<<<<<<< HEAD
           <img *ngIf ="!imgLoading" [src]="response" style="width:128px;height:128px; text-align: right">
           <button mat-flat-button class="btn-grad1" (click)="downloadImg()">Download</button>
-=======
-          <div id="outer2" >
-            <div class="inner2"><button mat-raised-button color="primary" (click)="changePos('move')">Translate</button></div>
-            <div class="inner2"><button mat-raised-button (click)="changePos('spin')">Rotate</button></div>
-            <div class="inner2"><button mat-raised-button color="primary" (click)="changePos('enlarge')">Scale</button></div>
-            <div class="inner2"><button mat-raised-button (click)="changePos('null')">Reset</button></div>
-          </div>
-          <img [src]="photoUrl1" [@photoState]="position" style="width:128px;height:128px; text-align: right">
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
         </div>
     </div>
 </div>

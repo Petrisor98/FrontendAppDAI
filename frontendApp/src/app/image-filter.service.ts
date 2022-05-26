@@ -34,5 +34,10 @@ export class ImageFilterService {
 
     return this.http
       .post(environment.apiURL + "/filter", formData, {responseType: 'blob'})
+
+
   }
+
+
+
 }

@@ -20,10 +20,7 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
-<<<<<<< HEAD
     "file-saver": "^2.0.5",
-=======
->>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
     "highcharts-angular": "^3.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
