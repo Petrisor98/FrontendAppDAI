@@ -3,8 +3,11 @@ import { trigger, state, style, transition, animate} from '@angular/animations';
 import * as Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
+<<<<<<< HEAD
 import {ImageFilterService} from "./image-filter.service";
 import { saveAs } from 'file-saver';
+=======
+>>>>>>> bfbfbc0a77cf8b8d6d8b259b44cc4616897e8edc
 
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
