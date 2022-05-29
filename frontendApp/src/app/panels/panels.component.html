@@ -1,12 +1,28 @@
-<div class='quodrant'>
-  <div class='qtop'>
-    <div class='quodrant1'>
-      <h1>Choose images or remove them by click</h1>
+<div class='hero'>
+  <div class='hero-body'>
+  <div class='primary'>
+    <div class='section'>
+      <h1 class = 'title'>Choose images or remove them by click:</h1>
+      <div>
+        <img *ngFor='let url of urls' [src]="url" [@photoState]="position" height="100"
+             (click)="deleteImage(url)"><br>
+      </div>
+
       <div draggable="true" ngClass="{{dragAreaClass}}">
         <div class="row">
-          <div class="col-md-12 text-center">
-            <img *ngFor='let url of urls' [src]="url" [@photoState]="position" height="100" (click)="deleteImage(url)"><br>
-            <input type="file" (change)="onSelectedFile($event)" accept="image/*" multiple/>
+          <div class="file">
+            <label class="file-label">
+
+              <input class="file-input" type="file" name="resume" (change)="onSelectedFile($event)" accept="image/*" multiple>
+              <span class="file-cta">
+                <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
           </div>
         </div>
       </div>
@@ -14,33 +30,51 @@
         Only images were uploaded
       </div>
     </div>
-<!--    <div class='quodrant2'>-->
-<!--      <h1>Performance monitoring</h1>-->
-<!--      <div id="chart-gauge"></div>-->
-<!--      <div id="chart-pie"></div>-->
-<!--      <div id="chart-line"></div>-->
-<!--    </div>-->
+
   </div>
-  <div class='qbottom'>
-    <div class='quodrant3'>
-      <h1>Select one filter</h1>
-      <div id="outer1">
-        <div class="inner1"><button mat-flat-button class="btn-grad1" (click)="applyFilter('sharpen')">Sharpen</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad2" (click)="applyFilter('emboss')">Emboss</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad3" (click)="applyFilter('sepia')">Sepia</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad1" (click)="applyFilter('contrast', 100)">Contrast</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad2" (click)="applyFilter('brightness', 10)">Brightness</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad3" (click)="applyFilter('black-white')">Black_White</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad1" (click)="applyFilter('gaussian-blur')">Gaussian_Blur</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad2" (click)="applyFilter('gradient')">Gradient</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad3" (click)="applyFilter('canny-edge-detection')">Canny_Edge_Detection</button></div>
-        <div class="inner1"><button mat-flat-button class="btn-grad3" (click)="applyFilter('canny-edge-detection')">test</button></div>
-      </div>
+  <div class='section'>
+    <h1 class = 'title'>Select one filter</h1>
+    <div class='columns is-mobile is-multiline is-centered'>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('sharpen')">Sharpen</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('emboss')">Emboss</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('sepia')">Sepia</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('contrast', 100)">Contrast</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('brightness', 10)">Brightness</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('black-white')">Black_White</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('gaussian-blur')">Gaussian_Blur</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('gradient')">Gradient</button>
+        </div>
+        <div class="column">
+          <button mat-flat-button class="button is-primary" (click)="applyFilter('canny-edge-detection')">Canny_Edge_Detection
+          </button>
+        </div>
     </div>
     <div class='quodrant4'>
       <h1>Modified images</h1>
-      <img *ngIf ="!imgLoading" [src]="response" style="width:128px;height:128px; text-align: right">
-      <button mat-flat-button class="btn-grad1" (click)="downloadImg()">Download</button>
+      <img *ngIf="!imgLoading" [src]="response" style="width:128px;height:128px; text-align: right">
+      <button mat-flat-button class="button is-primary" (click)="downloadImg()">Download</button>
     </div>
+  </div>
+      <div class='quodrant2'>
+        <h1>Performance monitoring</h1>
+        <div id="chart-gauge"></div>
+        <div id="chart-pie"></div>
+        <div id="chart-line"></div>
+      </div>
   </div>
 </div>

@@ -1,9 +1,71 @@
+
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" >
+      <img src="https://bpd.cdn.sos.ca.gov/images/computer.jpg" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <button *ngIf="!isLoggedIn" class="button is-light" (click)="login()" type="submit">Login</button>
+          <div *ngIf="isLoggedIn" class="content">
+            <a class="button is-light" (click)="logout()" href="#">Logout</a>
+            <br/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <div class="container" >
-  <button *ngIf="!isLoggedIn" class="btn btn-primary" (click)="login()" type="submit">Login</button>
+
   <div *ngIf="isLoggedIn" class="content">
-    <span>Welcome !!</span>
-    <a class="btn btn-default pull-right"(click)="logout()" href="#">Logout</a>
-    <br/>
     <app-panels></app-panels>
   </div>
 </div>
