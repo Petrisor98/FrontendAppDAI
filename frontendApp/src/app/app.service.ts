@@ -1,15 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Cookie } from 'ng2-cookies';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/catch';
-// import 'rxjs/add/operator/map';
+import {Injectable} from '@angular/core';
+import {Cookie} from 'ng2-cookies';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
 
 export class Foo {
   constructor(
     public id: number,
-    public name: string) { }
+    public name: string) {
+  }
 }
 
 @Injectable({
@@ -21,25 +19,26 @@ export class AppService {
   public redirectUri = 'http://localhost:8089/';
 
   constructor(
-    private _http: HttpClient){}
+    private _http: HttpClient) {
+  }
 
-  retrieveToken(code: any){
+  retrieveToken(code: any) {
     let params = new URLSearchParams();
-    params.append('grant_type','authorization_code');
+    params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
     params.append('client_secret', 'newClientSecret');
     params.append('redirect_uri', this.redirectUri);
-    params.append('code',code);
+    params.append('code', code);
 
     let headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'});
-    this._http.post('http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token', params.toString(), { headers: headers })
+    this._http.post('http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token', params.toString(), {headers: headers})
       .subscribe(
         data => this.saveToken(data),
         err => alert('Invalid Credentials')
       );
   }
 
-  saveToken(token: any){
+  saveToken(token: any) {
     var expireDate = new Date().getTime() + (1000 * token.expires_in);
     Cookie.set("access_token", token.access_token, expireDate);
     Cookie.set("id_token", token.id_token, expireDate);
@@ -47,15 +46,15 @@ export class AppService {
     window.location.href = 'http://localhost:8089';
   }
 
-  getResource(resourceUrl: string) : Observable<any>{
+  getResource(resourceUrl: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
-    return this._http.get(resourceUrl, { headers: headers });
+    return this._http.get(resourceUrl, {headers: headers});
   }
 
-  checkCredentials(){
+  checkCredentials() {
     return Cookie.check('access_token');
   }
 
