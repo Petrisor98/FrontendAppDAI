@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from "../environments/environment";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from "../environments/environment";
+import {Observable} from "rxjs";
+import {Cookie} from "ng2-cookies";
 
 
 @Injectable({
@@ -8,19 +10,24 @@ import { environment } from "../environments/environment";
 })
 export class ImageFilterService {
 
-  constructor(private http: HttpClient) { }
+  response?: string;
 
-  // generate the headers for content-type as JSON in a POST request
-  genHeadersJSON(): any {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
+  constructor(private http: HttpClient) {
   }
-  
-  // applying filter to image 
-  // filter can be sharpen, emboss, sepia, constrast, brightness, black_white, gaussian_blur, gradient or canny_edge_detection
-  applyFilter(image: File, filter: string): any {
-    const body = {image: image, filter: filter};
-    return this.http.post(environment.apiURL, JSON.stringify(body), this.genHeadersJSON());
+
+  // applying filter to image
+  // filter can be of type sharpen, emboss, sepia, contrast, brightness, black_white, gaussian_blur, gradient or canny_edge_detection
+  applyFilter(image: File, filter: string, level?: number): any {
+    const formData: any = new FormData();
+    formData.append("image", image);
+    formData.append("filter", filter);
+    if (level) {
+      formData.append("level", level);
+    }
+    const headers = new HttpHeaders({'Authorization': 'Bearer ' + Cookie.get('access_token')});
+
+    return this.http
+      .post( environment.apiURL + "/filter", formData, {headers: headers, responseType: 'blob' })
+
   }
 }
