@@ -7,6 +7,7 @@ Tehnologii utilizate:
 -  HTML
 -  SCSS
 -  TypeScript
+-  JavaScript
 -  HTTP
 -  Angular
 -  Node.js
