@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from "../environments/environment";
 import {Observable} from "rxjs";
+import {Cookie} from "ng2-cookies";
 
 
 @Injectable({
@@ -14,13 +15,6 @@ export class ImageFilterService {
   constructor(private http: HttpClient) {
   }
 
-  // generate the headers for content-type as JSON in a POST request
-  genHeadersJSON(): any {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})
-    };
-  }
-
   // applying filter to image
   // filter can be of type sharpen, emboss, sepia, contrast, brightness, black_white, gaussian_blur, gradient or canny_edge_detection
   applyFilter(image: File, filter: string, level?: number): any {
@@ -30,14 +24,10 @@ export class ImageFilterService {
     if (level) {
       formData.append("level", level);
     }
-    let blob_result: Blob;
+    const headers = new HttpHeaders({'Authorization': 'Bearer ' + Cookie.get('access_token')});
 
     return this.http
-      .post(environment.apiURL + "/filter", formData, {responseType: 'blob'})
-
+      .post( environment.apiURL + "/filter", formData, {headers: headers, responseType: 'blob' })
 
   }
-
-
-
 }

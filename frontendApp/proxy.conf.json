@@ -1,0 +1,7 @@
+{
+  "/api/filter": {
+    "target": "http://localhost:8081/api/filter",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
