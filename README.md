@@ -6,6 +6,7 @@ Se descarca proiectul folosind git clone dupa care se ruleaza in terminal in Vis
 Tehnologii utilizate:
 -  HTML
 -  SCSS
+-  Bulma
 -  TypeScript
 -  JavaScript
 -  HTTP
